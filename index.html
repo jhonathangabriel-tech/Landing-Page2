@@ -4,81 +4,418 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALIRA</title>
-    <meta name="descripton" content="Experimente o melhor que a ALIRA pode oferecer">
-<!--CSS-->
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="A ALIRA é uma startup de tecnologia que oferece soluções inteligentes para gestão, automação e crescimento de negócios.">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        :root {
+            --cor-primaria: #1d4ed8;
+            --cor-primaria-escura: #1e3a8a;
+            --cor-secundaria: #f59e0b;
+            --cor-texto: #1f2937;
+            --cor-texto-claro: #6b7280;
+            --cor-branca: #ffffff;
+            --cor-borda: #e5e7eb;
+            --sombra: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --sombra-hover: 0 14px 30px rgba(0, 0, 0, 0.14);
+        }
+
+        /* NAVBAR */
+        .navbar {
+            box-shadow: var(--sombra);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.7rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #fbbf24 !important;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 88vh;
+            background:
+                linear-gradient(rgba(13, 27, 62, 0.75), rgba(29, 78, 216, 0.70)),
+                url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .hero-conteudo {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(6px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: var(--sombra);
+        }
+
+        .hero-conteudo h1 {
+            font-size: 3rem;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .hero-conteudo p {
+            font-size: 1.15rem;
+            margin-bottom: 28px;
+            color: #f3f4f6;
+        }
+
+        .btn-principal {
+            background: var(--cor-secundaria);
+            color: #111827;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 14px 28px;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s ease;
+            box-shadow: var(--sombra);
+        }
+
+        .btn-principal:hover {
+            transform: translateY(-3px);
+            background: #fbbf24;
+            box-shadow: var(--sombra-hover);
+            color: #111827;
+        }
+
+        /* SEÇÕES */
+        .secao-padrao {
+            padding: 80px 0;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--cor-primaria-escura);
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        .titulo-secao::after {
+            content: "";
+            width: 90px;
+            height: 4px;
+            background: var(--cor-secundaria);
+            display: block;
+            margin: 12px auto 0;
+            border-radius: 999px;
+        }
+
+        /* CARDS */
+        .card-produto {
+            border: 1px solid var(--cor-borda);
+            border-radius: 18px;
+            box-shadow: var(--sombra);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .card-produto:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-hover);
+        }
+
+        .card-produto .card-title {
+            color: var(--cor-primaria-escura);
+            font-weight: 700;
+        }
+
+        .card-produto .card-text {
+            color: var(--cor-texto-claro);
+        }
+
+        .tag-recurso {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--cor-primaria);
+            background: #eff6ff;
+            padding: 8px 14px;
+            border-radius: 999px;
+            margin-top: 10px;
+        }
+
+        /* SOBRE */
+        .sobre-box {
+            max-width: 950px;
+            margin: 0 auto;
+            background: var(--cor-branca);
+            padding: 36px;
+            border-radius: 18px;
+            box-shadow: var(--sombra);
+            border: 1px solid var(--cor-borda);
+        }
+
+        .sobre-box p {
+            color: var(--cor-texto-claro);
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        /* ÁREA JS */
+        .interacao-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #dbeafe, #eff6ff);
+            padding: 36px;
+            border-radius: 18px;
+            box-shadow: var(--sombra);
+            text-align: center;
+        }
+
+        .interacao-box p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 24px 16px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 75vh;
+            }
+
+            .hero-conteudo {
+                padding: 28px 20px;
+            }
+
+            .hero-conteudo h1 {
+                font-size: 2rem;
+            }
+
+            .hero-conteudo p {
+                font-size: 1rem;
+            }
+
+            .titulo-secao {
+                font-size: 1.8rem;
+            }
+
+            .sobre-box,
+            .interacao-box {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-conteudo h1 {
+                font-size: 1.7rem;
+            }
+
+            .btn-principal {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!--header é um cabeçalho-->
-    <header>
-        <div class="logo">
-            <h1>ALIRA</h1>
+
+    <!-- NAVBAR BOOTSTRAP -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(90deg, #1d4ed8, #1e3a8a);">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">ALIRA</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar" aria-controls="menuNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menuNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Recursos">Recursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Interacao">Interação</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!--nav é um tipo de navegação-->
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#Compras">Compras</a></li>
-                <li><a href="#Sobre">Sobre</a></li>
-                <li><a href="#Contatos">Contatos</a></li>
-            </ul>
-        </nav>
-    </header>
+    </nav>
+
     <main>
-        <!--primeira imagem-->
-        <!-- São listas suspenças-->
+        <!-- HERO -->
         <section id="inicio" class="hero">
-            <div class="hero-conteudo">
-                <h1>O que leva felicidade e economia até você !</h1>
-                <p>Compras com 100% de qualidade e aquela confiança que só a ALIRA consegue entregar</p>
-                <a href="#Compras" class="btn-principal">Ver as Compras</a>
+            <div class="container">
+                <div class="hero-conteudo">
+                    <h1>Tecnologia inteligente para transformar a gestão do seu negócio</h1>
+                    <p id="texto-hero">
+                        A ALIRA oferece soluções digitais para automatizar processos, organizar vendas,
+                        acompanhar indicadores e impulsionar o crescimento de pequenas e médias empresas.
+                    </p>
+                    <a href="#Recursos" class="btn-principal">Conhecer Recursos</a>
+                </div>
             </div>
         </section>
 
+        <!-- RECURSOS COM GRID + CARDS BOOTSTRAP -->
+        <section id="Recursos" class="secao-padrao">
+            <div class="container">
+                <h2 class="titulo-secao">Recursos da Plataforma</h2>
 
-        <!--os produtos-->
-        <section seid="Compras" class="secao-padrao">
-            <h2>Nossos Produtos</h2>
-            <div class="produtos">
-                <article class="card">
-                    <h3>Arroz Integral - Salom </h3>
-                    <p>Ótimo Arroz para fazer no final de semana naquele churrasco de família</p>
-                    <span class="preco">R$ 18,99</span>
-                </article>
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card card-produto h-100">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Gestão de Estoque</h3>
+                                <p class="card-text">
+                                    Controle entradas, saídas e disponibilidade de produtos em tempo real,
+                                    reduzindo perdas e melhorando a organização do negócio.
+                                </p>
+                                <span class="tag-recurso">Eficiência</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <article class="card">
-                    <h3>Feijão Carioca - Salom </h3>
-                    <p>Feijão de qualidade para aquele almoço de domingo com a família</p>
-                    <span class="preco">R$ 9,99</span>
-                </article>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card card-produto h-100">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Relatórios Inteligentes</h3>
+                                <p class="card-text">
+                                    Acompanhe vendas, desempenho e métricas estratégicas por meio de relatórios
+                                    automáticos que ajudam na tomada de decisão.
+                                </p>
+                                <span class="tag-recurso">Análise</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <article class="card">
-                    <h3>Macarrão Parafuso - Raspi </h3>
-                    <p>Macarrão de qualidade para aquele almoço de domingo com a família</p>
-                    <span class="preco">R$ 5,99</span>
-                </article>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card card-produto h-100">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Automação de Atendimento</h3>
+                                <p class="card-text">
+                                    Centralize mensagens, agilize respostas e melhore a experiência do cliente
+                                    com fluxos automatizados e suporte digital.
+                                </p>
+                                <span class="tag-recurso">Agilidade</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <article class="card">
-                    <h3>Óleo de soja - Camp</h3>
-                    <p>Melhor Óleo do mercado</p>
-                    <span class="preco">R$ 7,99</span>
-                </article>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card card-produto h-100">
+                            <div class="card-body">
+                                <h3 class="card-title h5">Dashboard em Tempo Real</h3>
+                                <p class="card-text">
+                                    Visualize indicadores importantes do seu negócio em uma interface moderna,
+                                    simples e acessível em qualquer dispositivo.
+                                </p>
+                                <span class="tag-recurso">Controle</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        
-        
-        <!--Historia-->
+
+        <!-- SOBRE -->
         <section id="Sobre" class="secao-padrao">
-            <div class="sobre_historia">
-                <h2>Sobre a ALIRA</h2>
-                <p>A ALIRA é uma empresa de comércio eletrônico que oferece uma ampla variedade de produtos, desde alimentos até eletrônicos. Fundada em 2020, a ALIRA tem como missão proporcionar aos clientes uma experiência de compra fácil, rápida e segura, com preços competitivos e um excelente atendimento ao cliente. A ALIRA se destaca por sua plataforma intuitiva, que permite aos clientes navegar e encontrar produtos de forma eficiente. Além disso, a empresa investe em tecnologia para garantir a segurança das transações e a proteção dos dados dos clientes.</p>
+            <div class="container">
+                <h2 class="titulo-secao">Sobre a ALIRA</h2>
+                <div class="sobre-box">
+                    <p>
+                        A ALIRA é uma startup de tecnologia criada para simplificar a gestão de pequenas e médias empresas.
+                        Nossa plataforma reúne ferramentas de automação, análise de dados, controle de estoque e acompanhamento
+                        de desempenho em um único ambiente digital. Com uma interface intuitiva e recursos inteligentes, a ALIRA
+                        ajuda empreendedores a economizar tempo, reduzir erros operacionais e tomar decisões mais estratégicas.
+                        Nosso objetivo é transformar a tecnologia em uma aliada acessível para o crescimento dos negócios.
+                    </p>
+                </div>
             </div>
         </section>
-     </main>        
-    
+
+        <!-- INTERAÇÃO JAVASCRIPT -->
+        <section id="Interacao" class="secao-padrao">
+            <div class="container">
+                <h2 class="titulo-secao">Experimente a ALIRA</h2>
+                <div class="interacao-box">
+                    <p id="mensagem-js">
+                        Clique no botão abaixo para descobrir como a ALIRA pode acelerar a transformação digital do seu negócio.
+                    </p>
+                    <button class="btn btn-warning btn-lg fw-bold" onclick="mostrarVantagem()">
+                        Descobrir vantagem
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer>
-        <p>&copy; 2020 ALURA. Todos os direitos reservados.</p>
+        <p>&copy; 2026 ALIRA. Todos os direitos reservados.</p>
     </footer>
-    <!--entra aqui o visual-->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript DOM -->
+    <script>
+        function mostrarVantagem() {
+            document.getElementById("mensagem-js").innerText =
+                "Com a ALIRA, sua empresa ganha mais controle, produtividade e inteligência para crescer com segurança.";
+
+            document.getElementById("texto-hero").innerText =
+                "A ALIRA conecta automação, análise e gestão inteligente em uma plataforma moderna e acessível.";
+
+            alert("Bem-vindo à ALIRA! Descubra como a tecnologia pode impulsionar o seu negócio.");
+            console.log("Botão de interação clicado com sucesso!");
+        }
+    </script>
 </body>
 </html>
