@@ -1,0 +1,322 @@
+/* ===== RESET BÁSICO ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+/* ===== VARIÁVEIS DE COR ===== */
+:root {
+    --cor-primaria: #1d4ed8;
+    --cor-primaria-escura: #1e3a8a;
+    --cor-secundaria: #f59e0b;
+    --cor-texto: #1f2937;
+    --cor-texto-claro: #6b7280;
+    --cor-fundo: #f4f7fb;
+    --cor-branca: #ffffff;
+    --cor-card: #ffffff;
+    --cor-borda: #e5e7eb;
+    --sombra: 0 10px 25px rgba(0, 0, 0, 0.08);
+    --sombra-hover: 0 14px 30px rgba(0, 0, 0, 0.14);
+}
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-primaria-escura));
+    color: var(--cor-branca);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--sombra);
+}
+
+.logo h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--cor-branca);
+    font-weight: 600;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+nav a:hover {
+    color: #dbeafe;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: var(--cor-secundaria);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ===== HERO ===== */
+.hero {
+    min-height: 88vh;
+    background: linear-gradient(rgba(13, 27, 62, 0.75), rgba(29, 78, 216, 0.70)),
+                url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 8%;
+    color: var(--cor-branca);
+}
+
+.hero-conteudo {
+    max-width: 850px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: var(--sombra);
+}
+
+.hero-conteudo h1 {
+    font-size: 3rem;
+    margin-bottom: 18px;
+    line-height: 1.2;
+}
+
+.hero-conteudo p {
+    font-size: 1.15rem;
+    margin-bottom: 28px;
+    color: #f3f4f6;
+}
+
+/* ===== BOTÃO PRINCIPAL ===== */
+.btn-principal {
+    display: inline-block;
+    background: var(--cor-secundaria);
+    color: #111827;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 999px;
+    transition: 0.3s ease;
+    box-shadow: var(--sombra);
+}
+
+.btn-principal:hover {
+    transform: translateY(-3px);
+    background: #fbbf24;
+    box-shadow: var(--sombra-hover);
+}
+
+/* ===== SEÇÕES PADRÃO ===== */
+.secao-padrao {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    padding: 80px 0;
+}
+
+.secao-padrao h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--cor-primaria-escura);
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.secao-padrao h2::after {
+    content: "";
+    width: 90px;
+    height: 4px;
+    background: var(--cor-secundaria);
+    display: block;
+    margin: 12px auto 0;
+    border-radius: 999px;
+}
+
+/* ===== PRODUTOS ===== */
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.card {
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: var(--sombra);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sombra-hover);
+}
+
+.card h3 {
+    color: var(--cor-primaria-escura);
+    margin-bottom: 14px;
+    font-size: 1.2rem;
+}
+
+.card p {
+    color: var(--cor-texto-claro);
+    margin-bottom: 20px;
+    min-height: 72px;
+}
+
+.preco {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--cor-primaria);
+    background: #eff6ff;
+    padding: 8px 14px;
+    border-radius: 999px;
+}
+
+/* ===== SOBRE ===== */
+.sobre_historia {
+    max-width: 950px;
+    margin: 0 auto;
+    background: var(--cor-branca);
+    padding: 36px;
+    border-radius: 18px;
+    box-shadow: var(--sombra);
+    border: 1px solid var(--cor-borda);
+}
+
+.sobre_historia p {
+    color: var(--cor-texto-claro);
+    font-size: 1.05rem;
+    text-align: justify;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #0f172a;
+    color: #cbd5e1;
+    text-align: center;
+    padding: 24px 16px;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 0.95rem;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .hero-conteudo h1 {
+        font-size: 2.4rem;
+    }
+
+    .produtos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header {
+        padding: 18px 5%;
+    }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 18px 5%;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .hero {
+        min-height: 75vh;
+        padding: 32px 5%;
+    }
+
+    .hero-conteudo {
+        padding: 28px 20px;
+    }
+
+    .hero-conteudo h1 {
+        font-size: 2rem;
+    }
+
+    .hero-conteudo p {
+        font-size: 1rem;
+    }
+
+    .secao-padrao {
+        padding: 60px 0;
+    }
+
+    .secao-padrao h2 {
+        font-size: 1.8rem;
+    }
+
+    .produtos {
+        grid-template-columns: 1fr;
+    }
+
+    .card p {
+        min-height: auto;
+    }
+
+    .sobre_historia {
+        padding: 24px;
+    }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero-conteudo h1 {
+        font-size: 1.7rem;
+    }
+
+    .btn-principal {
+        width: 100%;
+        text-align: center;
+    }
+}
